@@ -1,0 +1,461 @@
+/*
+Name: Charles Chukwuebuka Chime
+Student No: 200613207
+Date: 07/20/2025
+Time: 12:00AM
+Brief Description of the code: My Well and full functional portfolio project using HTML/CSS ONLY!
+*/
+
+
+/* My locally hosted font */
+@font-face {
+    font-family: MyCustomFont;
+    src: url('local-fonts/Merriweather-Italic-VariableFont_opsz\,wdth\,wght.ttf') format('truetype');
+}
+@font-face {
+    font-family: MySecondCustomFont;
+    src: url('local-fonts/Merriweather-VariableFont_opsz\,wdth\,wght.ttf') format('truetype');
+}
+
+/* All the colors I will be needing for my project to avoid repetition and gives organization */
+:root{
+    --best-color1: rgb(255, 223, 0);
+    --best-color2: rgb(0,51,102);
+    --primary: rgb(220,220,220);
+    --secondary: rgb(40,40,40);
+    --additional-color: rgb(245,222,179);
+    --special-buttons: rgb(245,0,0);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------MOBILE FIRST DESIGN-------------- */
+
+body{
+    background-image: url('images/bgimage.jpg');
+    background-position: center;
+    background-size: cover;
+    line-height: 1.5rem;
+    /* Used the second custom locally hosted variable font because it's more readable */
+    font-family: MySecondCustomFont, Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+.container{
+    width: 100%;
+    padding: 1rem;
+}
+
+.site-header{
+    background-color: var(--best-color2);
+    position: sticky;
+    top:0;
+    z-index:2;
+}
+.header-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.logo img{
+    width: 100%;
+    height: auto;
+    max-height: 20vh;
+}
+
+.main-nav .nav-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* NOTE: I used a lot of font clamps for responsiveness in my font sizes*/
+
+.main-nav .nav-list .nav-item a{
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: clamp(1rem,1.4vw,3rem);
+    transition: color 0.3s ease;
+}
+.main-nav .nav-list .nav-item a:hover{
+    text-decoration: underline;
+    color: var(--best-color1);
+}
+/* First selector used!*/
+.main-nav .nav-list .nav-item:last-child a{
+    background-color: var(--additional-color);
+    color: var(--secondary);
+    padding: 0.8rem 1.2rem;
+    border-radius: 30px;
+    transition: background-color 0.5s ease;
+    /*Used the italics locally hosted fonts for the buttons and link texts*/
+    font-family: MyCustomFont, Georgia, 'Times New Roman', Times, serif;
+}
+.main-nav .nav-list .nav-item:last-child a:hover{
+    background-color: var(--secondary);
+    color: var(--additional-color);
+    text-decoration: none;
+}
+
+.home-section{
+    background: linear-gradient(to bottom, var(--best-color2), var(--primary));
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+/* My simple cool slide in text animation for just the home title */
+@keyframes slide-in-text {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.home-title{
+    color: var(--primary);
+    font-size: clamp(2rem,4.5vw,2.8rem);
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px var(--best-color1);
+    margin-bottom: 2rem;
+    animation: slide-in-text 5s ease;
+}
+.home-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.home-btn{
+    text-decoration: none;
+    padding: 1.2rem;
+    background-color: var(--best-color1);
+    color: var(--best-color2);
+    border-radius: 30px;
+    /*Used the italics locally hosted fonts for the buttons and link texts*/
+    font-family: MyCustomFont, Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: clamp(1rem,2vw,1.2rem);
+    transition: transform 0.5s ease, background-color 0.5s ease, color 0.5s ease ;
+}
+.home-btn:hover{
+    transform: translateY(-3px);
+    background-color: var(--best-color2);
+    color: var(--best-color1);
+}
+
+/*Another simple animation for my section titles*/
+@keyframes dim-glow-animation {
+  0% {
+    opacity: 0.5; /* Dim */
+  }
+  50% {
+    opacity: 1; /* Bright */
+    text-shadow: 2px 2px 4px var(--best-color1);
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0.5; /* Dim */
+  }
+}
+
+
+.section-title{
+    /* Called my external font */
+    font-family: "Anton", Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 2rem 1rem;
+    font-size: clamp(1.8rem,3.5vw,2.5rem);
+    color: var(--best-color2);
+    /*Used the long method of calling your animation for my section-titles*/
+    animation-name: dim-glow-animation;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+.about-section{
+    background-color: var(--additional-color);
+    padding: 2rem 1rem;
+}
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+}
+.about-image img{
+    height: 30vh;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-image img:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px var(--best-color1);
+}
+/* Second selector used!*/
+.about-content > p{
+    font-size: clamp(1.1rem,1.4vw,1.7rem);
+    font-weight: 800;
+    line-height: 1.7;
+}
+.about-content .youtube-btn{
+    margin: 2rem 0;
+}
+.about-content .youtube-btn a{
+    text-decoration: none;
+    padding: 1rem;
+    background-color: var(--special-buttons);
+    color: var(--primary);
+    border-radius: 30px;
+    /*Used the italics locally hosted fonts for the buttons and link texts*/
+    font-family: MyCustomFont, Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: clamp(1rem,1.3vw,1.6rem);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.about-content .youtube-btn a:hover{
+    background-color: var(--primary);
+    color: var(--special-buttons);
+}
+
+.skills-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+    margin: 1.5rem auto;
+}
+.skills-container .skill-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--best-color1);
+    box-shadow: 0 2px 4px var(--secondary);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+.skills-container .skill-item:hover{
+    transform: scale(1.04);
+    background-color: var(--additional-color);
+    box-shadow: 0 4px 10px var(--secondary);
+}
+.skill-title{
+    font-size: clamp(1.3rem,2vw,1.8rem);
+    color: var(--best-color2);
+    margin-bottom: 0.5rem;
+}
+.skill-details{
+    font-size: clamp(0.9rem,1.5vw,1.2rem);
+}
+
+.projects-section{
+    background-color: var(--additional-color);
+    padding: 2rem 1rem;
+}
+.projects-container{
+    display: grid;
+    /* Got this particular auto-fit minmax(320px, 1fr) from the practice styling we did before the mid-term exam*/
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.project-item{
+    background-color: var(--best-color2);
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-item:hover{
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px var(--secondary);
+}
+.project-item .project-image img{
+    filter: blur(1px);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.project-item .project-content .project-title{
+    padding: 1rem 0;
+    font-size: clamp(1.4rem,2vw,1.8rem);
+    text-decoration: underline;
+}
+.project-btn{
+    margin: 1.5rem 0;
+}
+.project-btn a{
+    text-decoration: none;
+    background-color: var(--special-buttons);
+    color: var(--primary);
+    padding: 1rem;
+    border-radius: 30px;
+    /*Used the italics locally hosted fonts for the buttons and link texts*/
+    font-family: MyCustomFont, Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.project-btn a:hover{
+    background-color: var(--primary);
+    color: var(--special-buttons);
+}
+
+.contact-section{
+    padding: 2rem 1rem;
+}
+.contact-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    margin: 0 auto;
+}
+.contact-info{
+    background-color: var(--additional-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--secondary);
+}
+.info-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.info-item img{
+    margin-right: 1rem;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+}
+.info-item p{
+    font-weight: 800;
+    color: var(--best-color2);
+    font-size: clamp(1rem,1.5vw,1.2rem);
+}
+
+.contact-form{
+    background-color: var(--secondary);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--best-color1);
+}
+.form-group { 
+    margin-bottom: 2rem; 
+}
+label{
+    display: block;
+    font-size: clamp(1.1rem,1.4vw,1.6rem);
+    font-weight: bold;
+    color: var(--best-color1);
+    margin-bottom: 0.5rem;
+}
+
+/* Third selector used!*/
+input,
+textarea{
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--secondary);
+    border: 1px solid var(--best-color1);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--primary);
+    transition: box-shadow 0.3s ease;
+}
+input:focus,
+textarea:focus{
+    box-shadow: 0 0 5px var(--best-color1);
+    outline: none;
+}
+.contact-btn{
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    /*Used the italics locally hosted fonts for the buttons and link texts*/
+    font-family: MyCustomFont, Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 1rem;
+    background-color: var(--best-color1);
+    color: var(--special-buttons);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.contact-btn:hover{
+    transform: translateY(-5px);
+    background-color: var(--special-buttons);
+    color: var(--best-color1);
+}
+
+.site-footer{
+    background-color: var(--best-color2);
+    padding: 2rem 1rem;
+    text-align: center;
+}
+.site-footer > p{
+    color: var(--primary);
+    font-weight: 800;
+    padding: 0.2rem;
+    font-size: clamp(1rem,1.5vw,1.1rem);
+}
+/* Fourth selector used!*/
+.site-footer > p + p{ 
+    color: var(--additional-color); 
+}
+
+/* ------------LARGER SCREENS: RESTORE WIDE LAYOUTS------------ */
+
+@media (min-width: 48em){
+    .header-container{ 
+        flex-direction: row;
+        justify-content: space-between;
+     }
+    .about-container{
+        flex-direction: row;
+        gap: 2rem;
+     }
+     .about-image img{
+        width: 300px;
+        height: auto;
+        border-radius: 10px;
+     }
+    .skills-container{ 
+        grid-template-columns: repeat(2,1fr); 
+    }
+    .skills-container .skill-item{
+        height: 25vh;
+    }
+    .contact-container{ 
+        flex-direction: row; 
+        justify-content: space-between;
+     }
+     /* In larger screens the contact-info and the contact-form takes 48% each from the full 100% then the gap takes the remaining*/
+    .contact-info, .contact-form{
+         width: 48%;
+     }
+}
+/* Used this last media queries because I need my skills container to specifically break into 3 then 2 then 1*/
+@media (min-width: 64em){
+    .skills-container{ 
+        grid-template-columns: repeat(3,1fr);
+     }
+ 
+}
